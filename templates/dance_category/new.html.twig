@@ -3,9 +3,9 @@
 {% block title %}New DanceCategory{% endblock %}
 
 {% block body %}
-    <h1>Create new DanceCategory</h1>
+    <h1>Create New DanceCategory</h1>
 
     {{ include('dance_category/_form.html.twig') }}
 
-    <a href="{{ path('app_dance_category_index') }}">back to list</a>
+    <a href="{{ path('app_dance_category_index') }}" class="btn btn-secondary">Back to List</a>
 {% endblock %}

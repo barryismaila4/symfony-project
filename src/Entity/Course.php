@@ -16,7 +16,7 @@ class Course
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: "text")]  // Utilisation du type "text" pour permettre une grande longueur
     private ?string $contenu = null;
 
     #[ORM\Column(length: 255)]

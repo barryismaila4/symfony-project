@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Backoffice{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Welcome to the Backoffice</h1>
+
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_dance_category_index') }}">Dance Categories</a></li>
+                <li><a href="{{ path('app_dance_category_new') }}">Create New Dance Category</a></li>
+                <li><a href="{{ path('app_dance_category_show', {id: 1}) }}">View Dance Category</a></li>
+                <!-- Ajoutez d'autres liens selon les besoins -->
+            </ul>
+        </nav>
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

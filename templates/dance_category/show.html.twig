@@ -3,7 +3,7 @@
 {% block title %}DanceCategory{% endblock %}
 
 {% block body %}
-    <h1>DanceCategory</h1>
+    <h1>DanceCategory Details</h1>
 
     <table class="table">
         <tbody>
@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_dance_category_index') }}">back to list</a>
+    <a href="{{ path('app_dance_category_index') }}" class="btn btn-secondary">Back to List</a>
 
-    <a href="{{ path('app_dance_category_edit', {'id': dance_category.id}) }}">edit</a>
+    <a href="{{ path('app_dance_category_edit', {'id': dance_category.id}) }}" class="btn btn-warning">Edit</a>
 
     {{ include('dance_category/_delete_form.html.twig') }}
 {% endblock %}

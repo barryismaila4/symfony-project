@@ -1,17 +1,16 @@
 {% extends 'base.html.twig' %}
 
-
-{% block title %}DanceCategory index{% endblock %}
+{% block title %}DanceCategory Index{% endblock %}
 
 {% block body %}
-    <h1>DanceCategory index</h1>
+    <h1>Dance Categories</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,17 +19,17 @@
                 <td>{{ dance_category.id }}</td>
                 <td>{{ dance_category.name }}</td>
                 <td>
-                    <a href="{{ path('app_dance_category_show', {'id': dance_category.id}) }}">show</a>
-                    <a href="{{ path('app_dance_category_edit', {'id': dance_category.id}) }}">edit</a>
+                    <a href="{{ path('app_dance_category_show', {'id': dance_category.id}) }}" class="btn btn-info">Show</a>
+                    <a href="{{ path('app_dance_category_edit', {'id': dance_category.id}) }}" class="btn btn-warning">Edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">No records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_dance_category_new') }}">Create new</a>
+    <a href="{{ path('app_dance_category_new') }}" class="btn btn-primary">Create New</a>
 {% endblock %}
