@@ -1,0 +1,78 @@
+{% extends 'watch.html.twig' %}
+
+{% block title %}Dance Categories{% endblock %}
+
+{% block body %}
+    {% set body_title = 'Liste des catégories de danse' %}
+
+    <div class="w3-container">
+        <h2 class="w3-center">{{ body_title }}</h2>
+
+        {% block categories %}
+            <style>
+                /* Style du tableau */
+                .dance-category-table {
+                    width: 100%;
+                    margin-top: 20px;
+                    border-collapse: collapse;
+                }
+
+                .dance-category-table th, .dance-category-table td {
+                    padding: 10px;
+                    text-align: left;
+                    border: 1px solid #ddd;
+                }
+
+                .dance-category-table th {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+                .dance-category-table tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+
+                .dance-category-table tr:hover {
+                    background-color: #ddd;
+                }
+
+                .dance-category-table .action-button {
+                    padding: 6px 12px;
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+
+                .dance-category-table .action-button:hover {
+                    background-color: #45a049;
+                }
+            </style>
+
+            <table class="dance-category-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>listes des catégorie</th>
+                        <th>cliqué sur voir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in dance_categories %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ category.name }}</td>
+                            <td>
+                                <a href="{{ path('app_dance_category_show', { id: category.id }) }}" class="action-button">
+                                    Voir
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endblock %}
+    </div>
+{% endblock %}

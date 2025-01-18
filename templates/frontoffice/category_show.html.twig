@@ -1,0 +1,97 @@
+{% extends 'watch.html.twig' %}
+
+{% block title %}Écoles de danse pour {{ category_name }}{% endblock %}
+
+{% block body %}
+    <style>
+        /* Style général pour le corps de la page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Titre de la page */
+        h1, h3 {
+            color: #4A90E2;
+        }
+
+        /* Liste des écoles de danse */
+        .dance-school-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Chaque école de danse */
+        .dance-school-house {
+            background-color: #ffeb3b; /* Cube jaune */
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        /* Effet de survol pour les écoles */
+        .dance-school-house:hover {
+            transform: scale(1.05);
+        }
+
+        /* Icône de l'école */
+        .school-icon {
+            font-size: 50px; /* Taille agrandie de l'emoji */
+            text-align: center;
+        }
+
+        /* Informations de l'école */
+        .school-info {
+            margin-top: 10px;
+        }
+
+        /* Lien vers les cours */
+        .dance-school-house a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #4A90E2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        /* Effet de survol pour le lien */
+        .dance-school-house a:hover {
+            background-color: #357ABD;
+        }
+    </style>
+
+    {% set body_title = 'Écoles de danse pour la catégorie : ' ~ category_name %}
+
+    {% block schools %}
+        <div class="dance-school-list">
+            {% for school in dance_schools %}
+                <div class="dance-school-house">
+                    <!-- Emoji d'école avec taille agrandie -->
+                    <div class="school-icon">🏫</div>
+                    <h3>{{ school.name }}</h3>
+
+                    <!-- Informations de l'école dans un "vrai" cube jaune -->
+                    <div class="school-info">
+                        <p><strong>Localisation :</strong> {{ school.localisation }}</p>
+                        <p><strong>Jour d'ouverture :</strong> {{ school.openday }}</p>
+                        <p><strong>Jour de fermeture :</strong> {{ school.closeday }}</p>
+                        <p><strong>Heure d'ouverture :</strong> {{ school.opentime }}</p>
+                        <p><strong>Heure de fermeture :</strong> {{ school.closetime }}</p>
+                    </div>
+
+                    <a href="{{ path('app_dance_school_courses', { id: school.id }) }}">Voir les cours</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+{% endblock %}

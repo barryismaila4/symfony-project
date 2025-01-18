@@ -1,0 +1,19 @@
+{% extends 'watch.html.twig' %}
+
+{% block title %}Cours à {{ school_name }}{% endblock %}
+
+{% block body %}
+    {% set body_title = 'Cours proposés par ' ~ school_name %}
+    {% block courses %}
+        <h2>Liste des cours</h2>
+        <div class="courses-container">
+            {% for course in courses %}
+                <div class="course-card">
+                    <h3>{{ course.title }}</h3>
+                    <p><strong>Instructeur :</strong> {{ course.instructor }}</p>
+                    <p><strong>Contenu :</strong> {{ course.contenu }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -78,4 +78,19 @@ final class DanceCategoryController extends AbstractController
 
         return $this->redirectToRoute('app_dance_category_index', [], Response::HTTP_SEE_OTHER);
     }
+    #[Route('/names', name: 'app_dance_category_names', methods: ['GET'])]
+    public function getCategoryNames(DanceCategoryRepository $danceCategoryRepository): Response
+    {
+        // Récupérer les catégories de danse
+        $danceCategories = $danceCategoryRepository->findAll();
+        
+        // Extraire uniquement les noms des catégories
+        $categoryNames = array_map(function ($category) {
+            return $category->getName();
+        }, $danceCategories);
+
+        // Retourner une réponse avec les noms
+        return $this->json($categoryNames);
+    }
+
 }
