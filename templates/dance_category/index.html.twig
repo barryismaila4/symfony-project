@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}DanceCategory index{% endblock %}
+
+{% block body %}
+    <h1>DanceCategory index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dance_category in dance_categories %}
+            <tr>
+                <td>{{ dance_category.id }}</td>
+                <td>{{ dance_category.name }}</td>
+                <td>
+                    <a href="{{ path('app_dance_category_show', {'id': dance_category.id}) }}">show</a>
+                    <a href="{{ path('app_dance_category_edit', {'id': dance_category.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_dance_category_new') }}">Create new</a>
+{% endblock %}
